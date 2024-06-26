@@ -12,10 +12,12 @@ test: $(object)
 %.o: %.c 
 	gcc -c $<
 
-# 没有依赖的话，使用make xxx就会执行其下相应的指令
+# 使用make xxx就会执行其下相应的指令，但当有同名文件的时候，不会执行make clean
+# 所以需要伪指令,如下
+.PHONY: clean
 clean: 
 	rm *.o 
-	rm main 
+	rm test 
 
 curname = yihoom
 curname ?= sijin

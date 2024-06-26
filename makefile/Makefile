@@ -1,5 +1,6 @@
-main: main.o input.o calcu.o 
-	gcc -o main main.o input.o calcu.o 
+object = main.o input.o calcu.o 
+main: $(object)
+	gcc -o main $(object)
 main.o: main.c 
 	gcc -c main.c 
 input.o: input.c 

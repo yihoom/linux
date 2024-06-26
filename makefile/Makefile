@@ -1,13 +1,16 @@
 object = main.o input.o
 object += calcu.o  
-main: $(object)
-	gcc -o main $(object)
-main.o: main.c 
-	gcc -c main.c 
-input.o: input.c 
-	gcc -c input.c 
-calcu.o: calcu.c 
-	gcc -c calcu.c 
+test: $(object)
+	gcc -o $@ $^
+# main.o: main.c 
+# 	gcc -c main.c 
+# input.o: input.c 
+# 	gcc -c input.c 
+# calcu.o: calcu.c 
+# 	gcc -c calcu.c 
+# 以下为makefile的模式规则，%标志最终目标依赖的值
+%.o: %.c 
+	gcc -c $<
 
 # 没有依赖的话，使用make xxx就会执行其下相应的指令
 clean: 
